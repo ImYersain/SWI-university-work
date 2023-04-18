@@ -1,5 +1,5 @@
 import axios from '../utils/axios';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 import {IProject} from '../types/project';
 import {ProjectItem} from '../components/ProjectItem';
 import {useSelector} from 'react-redux';
@@ -10,19 +10,18 @@ export const ProjectsPage = () => {
   const allMyProjects = useSelector((state: RootState) => state.project.projects);
   const userName = useSelector((state: RootState) => state.auth.user?.username);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const fetchMyProjects = async () => {
+  const fetchMyProjects = useCallback(async () => {
     try {
-      const {data} = await axios.get('/projects/user/me');
-      setProjects(data);
+    const {data} = await axios.get('/projects/user/me');
+    setProjects(data);
     } catch (error) {
-      console.log(error);
+    console.log(error);
     }
-  };
-
-  useEffect(() => {
+    }, [setProjects]);
+    
+    useEffect(() => {
     fetchMyProjects();
-  }, [fetchMyProjects]);
+    }, [fetchMyProjects]);
 
   if (!projects.length) {
     return <div className="text-xl text-center text-white py-10">No projects yet</div>;
