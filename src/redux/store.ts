@@ -2,14 +2,12 @@ import projectSlice from './features/project/projectSlice';
 import authSlice from './features/auth/authSlice';
 import commentSlice from './features/comments/commentSlice';
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import studentsSlice from './features/students/studentsSlice';
 
 
 const rootReducer = combineReducers({
     auth: authSlice,
     project: projectSlice,
     comment: commentSlice,
-    //students: studentsSlice
 })
 
 export const setupStore = () => {
