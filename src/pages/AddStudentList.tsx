@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { addStudents } from '../redux/features/students/studentsSlice';
-import { RootState } from '../redux/store';
 
 export const AddStudentList = () => {
     const [fileContent, setFileContent] = useState<any>("");
-    //const dispatch = useDispatch();
-    //const students = useSelector((state : RootState) => state.students.students);
     
     const handleFileUpload = (event:any) => {
         const file = event.target.files[0];
@@ -19,7 +14,6 @@ export const AddStudentList = () => {
     };
 
     useEffect(() => {
-        //dispatch(addStudents(fileContent.split(', ')));
         localStorage.setItem("students", fileContent.split(', '));
     }, [fileContent])
     

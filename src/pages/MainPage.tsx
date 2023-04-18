@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { PopularProject } from '../components/PopularProject';
@@ -10,14 +10,11 @@ import { AppDispatch, RootState } from '../redux/store';
 export const MainPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { projects, popularProjects, loading } = useSelector((state: RootState) => state.project);
-  const isAuth = useSelector(checkIsAuth);
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllProjects());
   }, [dispatch]);
 
- // if(!isAuth) navigate('/login');  //описать в бп что с помощью этого нельзя бегать по урл не авторизованным
   
   if (!projects.length) {
     return <div className="text-xl text-center text-white py-10">No projects yet</div>;

@@ -10,7 +10,6 @@ import { removeProject } from '../redux/features/project/projectSlice';
 import { toast } from 'react-toastify';
 import { createComment, getProjectComments } from '../redux/features/comments/commentSlice';
 import { CommentItem } from '../components/CommentItem';
-import ReactMarkdown from 'react-markdown';
 
 export const ProjectPage = () => {
   const params = useParams();

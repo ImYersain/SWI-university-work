@@ -42,7 +42,9 @@ export const ProjectsPage = () => {
             <div>
               <ProjectItem key={i} project={project} />
             </div>
-          );
+          )
+        } else {
+          return
         }
       })}
     </div>
