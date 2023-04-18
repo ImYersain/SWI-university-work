@@ -44,7 +44,7 @@ export const ProjectsPage = () => {
             </div>
           )
         } else {
-          return
+          return null;
         }
       })}
     </div>
