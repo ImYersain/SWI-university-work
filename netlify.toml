@@ -1,2 +1,3 @@
 [build]
 skip_functions_build = true
+process.env.CI = false
