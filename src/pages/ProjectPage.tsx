@@ -10,6 +10,7 @@ import { removeProject } from '../redux/features/project/projectSlice';
 import { toast } from 'react-toastify';
 import { createComment, getProjectComments } from '../redux/features/comments/commentSlice';
 import { CommentItem } from '../components/CommentItem';
+import ReactMarkdown from 'react-markdown';
 
 export const ProjectPage = () => {
   const params = useParams();
@@ -131,8 +132,7 @@ export const ProjectPage = () => {
           <div className="text-black text-xl mt-2 text-center">{project.title}</div>
           <div className="text-[14px] text-black">Team: <span className='text-green-500 font-bold'>{project.team}</span></div>
           <p className="text-white pt-4">
-          {/* <ReactMarkdown children={project.text} /> */}
-          {project.text}
+            <ReactMarkdown children={project.text} />
           </p>
           <br />
           <br />
