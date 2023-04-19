@@ -98,7 +98,7 @@ export const ProjectPage = () => {
   return (
     <div>
       <button className="flex justify-center items-center bg-[#8f0e07] text-xs text-white rounded-sm py-2 px-4 mt-4 hover:text-black">
-        <Link className="flex" to={'/home'}>
+        <Link className="flex" to={'/'}>
           Back
         </Link>
       </button>
