@@ -108,7 +108,7 @@ export const ProjectPage = () => {
           <div className="flex flex-col basis-1/4 flex-grow">
             <div className={'flex rounded-sm h-80'}>
               {project?.imgUrl ? (
-                <img src={`http://localhost:3007/${project.imgUrl}`} alt="img" className="object-cover w-full" />
+                <img src={`https://swi-bp.herokuapp.com/${project.imgUrl}`} alt="img" className="object-cover w-full" />
               ) : (
                 <img
                   src={'https://lms.pb.edu.bn/vle/sict/pluginfile.php/16462/course/overviewfiles/project.png'}
