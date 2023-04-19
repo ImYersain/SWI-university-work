@@ -24,7 +24,7 @@ export default function StudentsList() {
 
   return (
     <div className='mt-5 text-center'>
-    <div className="text-xl text-center mb-5"><b>Registration students</b></div>
+    <div className="text-xl text-center mb-5"><b>Registrated students</b></div>
      <ul>
         {students?.map(({studentname, studentlastname, username, _id}) => <li key={_id}>{studentname} {studentlastname} - <a className='hover:text-green-500'  href={`mailto: ${username}`}>{username}</a></li>)}
      </ul>

@@ -27,14 +27,14 @@ export const Navbar = () => {
   return (
     <div className="flex p-4 justify-between items-center bg-[#8f0e07]">
       <span className="flex justify-center items-center w-30 h-30 p-2 bg-[#757474] text-white text-[14px] rounded-sm">
-        <Link to={'/home'}>SWI projects</Link>
+        <Link to={'/'}>SWI projects</Link>
       </span>
 
       {isAuth && (
         <ul className="flex gap-8">
           <li>
             <NavLink
-              to={'/home'}
+              to={'/'}
               className="text-[14px] text-white hover:text-black"
               style={({isActive}) => (isActive ? activeStyles : undefined)}
             >
