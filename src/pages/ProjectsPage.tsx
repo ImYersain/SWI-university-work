@@ -9,7 +9,7 @@ export const ProjectsPage = () => {
   const [projects, setProjects] = useState<Array<IProject>>([]);
   const allMyProjects = useSelector((state: RootState) => state.project.projects);
   const userName = useSelector((state: RootState) => state.auth.user?.username);
-  const [onlyMyProjects, setOnlyMyProjects] = useState<any>([]);
+  const [onlyMyProjects, setOnlyMyProjects] = useState<Array<IProject>>([]);
 
   // useEffect(() => {
   //   const fetchMyProjects = async () => {
@@ -52,7 +52,7 @@ export const ProjectsPage = () => {
         </div>
       ))}
 
-      {onlyMyProjects.map((project: IProject,i: React.Key | null | undefined) => <div><ProjectItem key={i} project={project} /></div>)}
+      {onlyMyProjects.map((project, i) => <div><ProjectItem key={i} project={project} /></div>)}
     </div>
   );
 };
