@@ -1,5 +1,5 @@
 import axios from '../utils/axios';
-import React, {useEffect, useState, useCallback} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {IProject} from '../types/project';
 import {ProjectItem} from '../components/ProjectItem';
 import {useSelector} from 'react-redux';
@@ -9,6 +9,20 @@ export const ProjectsPage = () => {
   const [projects, setProjects] = useState<Array<IProject>>([]);
   const allMyProjects = useSelector((state: RootState) => state.project.projects);
   const userName = useSelector((state: RootState) => state.auth.user?.username);
+  const [onlyMyProjects, setOnlyMyProjects] = useState<any>([]);
+
+  // useEffect(() => {
+  //   const fetchMyProjects = async () => {
+  //   try {
+  //   const { data } = await axios.get('/projects/user/me');
+  //   setProjects(data);
+  //   } catch (error) {
+  //   console.log(error);
+  //   }
+  //   };
+    
+  //   fetchMyProjects();
+  //   }, []);
 
   const fetchMyProjects = useCallback(async () => {
     try {
@@ -19,13 +33,16 @@ export const ProjectsPage = () => {
     }
     }, [setProjects]);
     
-    useEffect(() => {
-    fetchMyProjects();
-    }, [fetchMyProjects]);
+  useEffect(() => {
+  fetchMyProjects();
+  const filteredProjects = allMyProjects.filter(project => project.team.includes(userName as string));
+  setOnlyMyProjects(filteredProjects);
+  }, [fetchMyProjects, allMyProjects, userName]);
+    
 
-  if (!projects.length) {
-    return <div className="text-xl text-center text-white py-10">No projects yet</div>;
-  }
+  // if (!projects.length && !onlyMyProjects.length) {
+  //   return <div className="text-xl text-center text-white py-10">No projects yet</div>;
+  // }
 
   return (
     <div className="w-1/2 mx-auto py-10 flex-col gap-10">
@@ -35,17 +52,7 @@ export const ProjectsPage = () => {
         </div>
       ))}
 
-      {allMyProjects.map((project, i) => {
-        if (project.team.includes(userName as string)) {
-          return (
-            <div>
-              <ProjectItem key={i} project={project} />
-            </div>
-          )
-        } else {
-          return null;
-        }
-      })}
+      {onlyMyProjects.map((project: IProject,i: React.Key | null | undefined) => <div><ProjectItem key={i} project={project} /></div>)}
     </div>
   );
 };
