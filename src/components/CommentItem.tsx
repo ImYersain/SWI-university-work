@@ -13,7 +13,9 @@ export const CommentItem = ({ cmt }: ICommentItemProps) => {
         {avatar}
       </div>
       <div className="flex flex-col">
-        <div className={`lex text-xs ${cmt.author === 'ucitel'?'text-red-500':'text-green-500'}`}>{cmt.author}: </div>
+        <div className={`lex text-xs ${cmt.author === 'ucitel'?'text-red-500':'text-green-500'}`}>
+          <a className='hover:text-black ' href={`mailto: ${cmt.author}`}>{cmt.author}</a>:
+        </div>
         <div className="flex text-black text-[14px]">{cmt.comment}</div>
       </div>
     </div>
